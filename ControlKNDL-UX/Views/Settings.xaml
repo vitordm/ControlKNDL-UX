@@ -1,0 +1,15 @@
+﻿<Window x:Class="ControlKNDL_UX.Views.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControlKNDL_UX.Views"
+        mc:Ignorable="d"
+        Title="Settings" Height="168.432" Width="300" WindowStyle="ToolWindow">
+    <Grid>
+        <GroupBox x:Name="gbProgam" Header="Kindle" VerticalAlignment="Top" Height="81"/>
+        <Label  x:Name="label" Content="Version Folder" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" Height="23" Margin="10,45,90,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Set" HorizontalAlignment="Left" Margin="202,45,0,0" VerticalAlignment="Top" Width="46" Click="button_Click" Height="23"/>
+    </Grid>
+</Window>
