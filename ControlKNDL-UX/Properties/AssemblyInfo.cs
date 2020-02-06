@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ControlKNDL-UX")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Converter Ebooks to Kindle Format")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Vítor Oliveira")]
 [assembly: AssemblyProduct("ControlKNDL-UX")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©  Vítor Gaudêncio Isse de Oliveira")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
