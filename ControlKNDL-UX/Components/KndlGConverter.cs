@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace ControlKNDL_UX.Components
@@ -18,15 +14,6 @@ namespace ControlKNDL_UX.Components
 
         public string Log { get; set; }
 
-        private bool _success;
-        public bool Success
-        {
-            get
-            {
-                return _success;
-            }
-        }
-
         public bool ConvertFile(string fileName)
         {
             if (fileName == null || fileName == string.Empty)
@@ -39,23 +26,22 @@ namespace ControlKNDL_UX.Components
             string kndl = System.Environment.CurrentDirectory;
             
             kndl += $"\\ext\\{kndlGProgram}\\kindlegen.exe";
-            Process pProcess = new Process();
-            pProcess.StartInfo.FileName = kndl;
-            pProcess.StartInfo.Arguments = $"\"{fileName}\"";
-            pProcess.StartInfo.UseShellExecute = false;
-            pProcess.StartInfo.RedirectStandardOutput = true;
-            pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            pProcess.StartInfo.CreateNoWindow = true;
-            pProcess.Start();
-            Log = pProcess.StandardOutput.ReadToEnd();
-            pProcess.WaitForExit();
+            using (var process = new Process())
+            {
+                process.StartInfo.FileName = kndl;
+                process.StartInfo.Arguments = $"\"{fileName}\"";
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                process.StartInfo.CreateNoWindow = true;
+                process.Start();
+                Log = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
 
-            Log = Util.utf8_decode(Log);
-
-            //string logFile = "log_" + (new DateTime()).ToString("ddMMyyyyHHmmss");
+                Log = Util.utf8_decode(Log);
+            }
             string logFile = "log_" + DateTime.Now.ToString("ddMMyyyyHHmmss");
-
-            Components.Lognattor.write(Log, logFile);
+            Lognattor.Write(Log, logFile);
 
             return true;
         }

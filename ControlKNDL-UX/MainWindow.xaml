@@ -27,7 +27,7 @@
         <Label x:Name="lbOutput" Content="Output" HorizontalAlignment="Left" Margin="41,119,0,0" VerticalAlignment="Top"  Height="25" FontSize="13.333"/>
         <TextBox x:Name="tbOutput"  IsReadOnly="True" HorizontalAlignment="Left" Height="147" Margin="23,146,0,0" IsEnabled="true" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="502"  ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto"/>
         <Button x:Name="btConvert" HorizontalAlignment="Left" Margin="452,86,0,0" VerticalAlignment="Top" Width="42" Height="22" Click="btConvert_Click" ToolTip="Converter">
-                <fa:FontAwesome Icon="Refresh" FontSize="13.333" />
+                <fa:FontAwesome Icon="ArrowRight"  FontSize="13.333" />
         </Button>
     </Grid>
 </Window>

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace ControlKNDL_UX.Components
@@ -19,13 +16,13 @@ namespace ControlKNDL_UX.Components
         /// </summary>
         public const string ext = "log";
 
-        public static bool w(IDictionary<string, object> parm, string file = "log")
+        public static bool W(IDictionary<string, object> parm, string file = "log")
         {
             foreach (var i in parm)
             {
                 string tx = i.Key;
                 tx += " | " + i.Value.ToString();
-                w(tx, file);
+                W(tx, file);
             }
             return true;
         }
@@ -36,12 +33,12 @@ namespace ControlKNDL_UX.Components
         /// <param name="txt"></param>
         /// <param name="file"></param>
         /// <returns></returns>
-        public static bool w(string txt, string file = "log")
+        public static bool W(string txt, string file = "log")
         {
             string text = DateTime.Now.ToString() + " | ";
             text += txt;
 
-            return write(text);
+            return Write(text);
 
         }
 
@@ -51,7 +48,7 @@ namespace ControlKNDL_UX.Components
         /// <param name="txt"></param>
         /// <param name="file"></param>
         /// <returns>Saved or no</returns>
-        public static bool write(string txt, string file = "log")
+        public static bool Write(string txt, string file = "log")
         {
             try
             {
@@ -61,11 +58,14 @@ namespace ControlKNDL_UX.Components
 
                 string path_file = DefaultPath + file + "." + Lognattor.ext;
 
-                System.IO.FileStream Fs = new System.IO.FileStream(path_file, System.IO.FileMode.Append, System.IO.FileAccess.Write, System.IO.FileShare.None);
-                System.IO.StreamWriter Sw = new System.IO.StreamWriter(Fs);
-                Sw.WriteLine(txt);
-
-                Sw.Close();
+                using(var fs = new System.IO.FileStream(path_file, System.IO.FileMode.Append, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                {
+                    using(var sw = new System.IO.StreamWriter(fs))
+                    {
+                        sw.WriteLine(txt);
+                        sw.Close();
+                    }
+                }
 
                 return true;
 
@@ -76,16 +76,13 @@ namespace ControlKNDL_UX.Components
 
             }
 
-
-
-
         }
 
         /// <summary>
         /// Put a console information
         /// </summary>
         /// <param name="txt"></param>
-        public static void info(string txt)
+        public static void Info(string txt)
         {
             Console.WriteLine(txt);
         }
